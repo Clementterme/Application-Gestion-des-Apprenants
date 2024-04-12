@@ -7,7 +7,7 @@ class ConnexionController
     use Render;
     public function homepage()
     {
-        $this->render("connexion");
+        $this->render("dashboard");
     }
 
     public function handleFormSubmission()

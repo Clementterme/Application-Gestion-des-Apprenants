@@ -8,7 +8,7 @@ $uri = $_SERVER['REQUEST_URI'];
 $methode = $_SERVER['REQUEST_METHOD'];
 
 $homeController = new HomeController();
-$reservationController = new ConnexionController();
+$connexionController = new ConnexionController();
 // $simplonController = new SimplonController();
 
 switch ($uri) {
@@ -17,11 +17,18 @@ switch ($uri) {
         break;
     case HOME_URL . "connexion":
         if ($methode == 'GET') {
-            $reservationController->homepage();
+            $connexionController->homepage();
         } else if ($methode == 'POST') {
-            $reservationController->handleFormSubmission();
+            $connexionController->handleFormSubmission();
         }
         break;
+        case HOME_URL . "dashboard":
+            if ($methode == 'GET') {
+                $connexionController->homepage();
+            } else if ($methode == 'POST') {
+                header("location: dashboard.php");
+            }
+            break;
     case HOME_URL . "simplon":
         if ($methode == 'GET') {
             $simplonController->homepage();
@@ -29,6 +36,9 @@ switch ($uri) {
             $simplonController->create();
         }
         break;
+        case HOME_URL.'deconnexion':
+            $homeController->quit();
+            break;
     default:
         $homeController->pageNotFound();
         break;
