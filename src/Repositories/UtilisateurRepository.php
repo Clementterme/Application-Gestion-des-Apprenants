@@ -1,7 +1,7 @@
 <?php
 
-include __DIR__ . '/../Models/Utilisateur.php';
-include __DIR__ . '/../Models/Database.php';
+require_once __DIR__ . '/../Models/Utilisateur.php';
+require_once __DIR__ . '/../Models/Database.php';
 
 class UtilisateurRepository {
     private $DB;
@@ -10,7 +10,7 @@ class UtilisateurRepository {
         $database = new Database;
         $this->DB = $database->getDB();
 
-        require_once __DIR__ . '/../../config.php';
+        require_once __DIR__ . '/../config.php';
     }
 
     public function getAllUtilisateurs() {
