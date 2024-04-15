@@ -8,3 +8,13 @@
 h2 {
     text-align: center;
 }
+
+.nav-list {
+    padding: 20px 20px 20px 20px;
+}
+
+.cours {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin: 20px;
+}

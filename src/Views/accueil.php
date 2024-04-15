@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-require_once __DIR__."/../Includes/header.php";
+require_once __DIR__ . "/../Includes/header.php";
 
 $bdd = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8;", DB_USER, DB_PWD);
 
@@ -16,9 +16,18 @@ if (isset($_POST["envoi"])) {
             $_SESSION["email"] = $email;
             $_SESSION["mdp"] = $mdp;
 
+            $_SESSION["role"] = $selectUser->fetch()["Id_1"];
+
             $_SESSION['connecté'] = TRUE;
 
-            header("location: dashboard");
+            if ($_SESSION["role"] == 0) {
+                $_SESSION["role"] = "Apprenant";
+                header("location: dashboard");
+            }
+             else if ($_SESSION["role"] == 1) {
+                $_SESSION["role"] = "Formateur";
+                header("location: dashboardFormateur");
+            }
         } else {
             echo "Email ou mot de passe incorrect";
         }
@@ -29,46 +38,25 @@ if (isset($_POST["envoi"])) {
 
 ?>
 
-<!-- <div class="d-flex justify-content-center">
-<div class="carregris">
-<h2>Bienvenue</h2>
-<form method="POST">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email *</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label" name="mdp">Mot de passe *</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="d-flex justify-content-center">
-  <button type="submit" class="btn btn-primary" name="envoi">Connexion</button>
-  </div>
-</form>
-</div>
-</div> -->
-
-
-
-<form method="POST">
-        <div class="d-flex justify-content-center">
-            <div class="list-group">
-                <div class="col-12">
-                    <label for="inputAddress2" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="inputAddress2" name="email">
-                </div>
-                <div class="col-12">
-                    <label for="inputAddress" class="form-label">Mot de passe</label>
-                    <input type="password" class="form-control" id="inputAddress" name="mdp">
-                </div>
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary" name="envoi">Connexion</button>
-                </div>
+<div class="d-flex justify-content-center">
+    <div class="carregris">
+        <h2>Bienvenue</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="inputEmail" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="inputEmail" name="email">
             </div>
-        </div>
-    </form>
-
+            <div class="mb-3">
+                <label for="inputMdp" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="inputMdp" name="mdp">
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary" name="envoi">Connexion</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <?php
 
-require_once __DIR__."/../Includes/footer.php";
+require_once __DIR__ . "/../Includes/footer.php";

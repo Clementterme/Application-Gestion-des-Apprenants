@@ -23,17 +23,11 @@ require_once __DIR__ . "/../Includes/header.php";
     </div>
     <p>15 participants</p>
     <form method="POST">
-            <div class="mb-3">
-                <label for="inputEmail" class="form-label">Code *</label>
-                <input type="text" class="form-control" id="inputCode" name="code" placeholder="......">
-            </div>
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary" name="valider">Valider présence</button>
             </div>
         </form>
 </div>
-
-
 
 <?php
 

@@ -2,16 +2,17 @@
 
 require_once __DIR__ . '/../Services/Render.php';
 
-class ConnexionController
-{
+class ConnexionController {
     use Render;
-    public function homepage()
-    {
+    public function homepage() {
         $this->render("dashboard");
     }
 
-    public function handleFormSubmission()
-    {
+    public function homepageFormateur() {
+        $this->render("dashboardFormateur");
+    }
+
+    public function handleFormSubmission() {
         // if (
         //     !empty($_POST) &&
         //     isset(
@@ -31,7 +32,7 @@ class ConnexionController
         //     $userRepository = new UtilisateurRepository();
         //     $userRepository->create($name, $surname, $email, $phone, $address);
 
-            header('location:' . HOME_URL . '/connexion');
+        header('location:' . HOME_URL . '/connexion');
         // }
     }
 }
