@@ -18,3 +18,15 @@ h2 {
     padding: 20px;
     margin: 20px;
 }
+
+#code {
+    font-size: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
