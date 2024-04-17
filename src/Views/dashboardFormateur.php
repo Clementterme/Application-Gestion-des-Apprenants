@@ -6,17 +6,19 @@ require_once __DIR__ . "/../Includes/header.php";
 <div class="nav-list">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a id="ongletAccueil" class="nav-link active" aria-current="page" href="#">Accueil</a>
+            <a id="ongletAccueil" class="nav-link active" aria-current="page">Accueil</a>
         </li>
         <li class="nav-item">
-            <a id="ongletPromotions" class="nav-link" href="#">Promotions</a>
+            <a id="ongletPromotions" class="nav-link">Promotions</a>
         </li>
     </ul>
 </div>
 
 
 <div id="accueil">
-    <h3>Cours du jour</h3>
+    <div class="paddingBase">
+        <h3>Cours du jour</h3>
+    </div>
 
     <div class="rectangleGris">
         <div class="d-flex justify-content-between">
@@ -93,35 +95,79 @@ require_once __DIR__ . "/../Includes/header.php";
     </table>
 </div>
 
-
-<div id="creationPromo" class="hidden">
-    <h3>Création d'une promotion</h3>
-
-    <div class="rectangleGris">
-        <form>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nom de la promotion</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Date de début</label>
-                <input type="date" class="form-control" id="exampleInputPassword1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Date de fin</label>
-                <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Place(s) disponible(s)</label>
-                <input type="number" class="form-control" id="exampleInputPassword1" value="1" min="1">
-            </div>
-            <div class="d-flex justify-content-between">
-            <button class="btn btn-primary" type="submit" id="retourCreationPromo">Retour</button>
-            <button class="btn btn-primary" type="submit">Sauvegarder</button>
-            </div>
-        </form>
+<div id="body">
+    <div id="creationPromo" class="hidden">
+        <div class="paddingBase">
+            <h3>Création d'une promotion</h3>
+            <div id="response" class="alert alert-success hidden"></div>
+        </div>
+        <div class="rectangleGris">
+            <form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nom de la promotion</label>
+                    <input type="text" class="form-control" id="nomPromo" name="nomPromo">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Date de début</label>
+                    <input type="date" class="form-control" id="dateDebut" name="dateDebut">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Date de fin</label>
+                    <input type="date" class="form-control" id="dateFin" name="dateFin">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Place(s) disponible(s)</label>
+                    <input type="number" class="form-control" id="placesPromo" value="1" min="1" name="placesPromo">
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="btn btn-primary" id="retourCreationPromo">Retour</div>
+                    <button class="btn btn-primary" id="sauvegarderCreationPromo" name="sauvegarderCreationPromo" onclick="appelAjax()">Sauvegarder</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
+<script>
+    let response = document.getElementById('response');
+
+    function appelAjax() {
+
+        response.classList.remove("hidden");
+
+        let nomPromo = document.getElementById('nomPromo').value;
+        let dateDebut = document.getElementById('dateDebut').value;
+        let dateFin = document.getElementById('dateFin').value;
+        let placesPromo = document.getElementById('placesPromo').value;
+        const request = new XMLHttpRequest();
+
+        request.open('POST', 'traitement.php', true);
+
+        request.setRequestHeader('content-type', 'application/json');
+
+        request.send(JSON.stringify({
+            'nomPromo': nomPromo,
+            'dateDebut': dateDebut,
+            'dateFin': dateFin,
+            'placesPromo': placesPromo
+        }));
+
+        request.onreadystatechange = function() {
+            if (request.readyState === 4 && request.status === 200) {
+                response.innerHTML += JSON.parse(request.responseText);
+            }
+        }
+    }
+</script>
+
+
+<?php
+
+// if (isset($_POST["sauvegarderCreationPromo"])) {
+//         echo 'whoooooooo';
+//     }
+
+?>
 
 <?php
 

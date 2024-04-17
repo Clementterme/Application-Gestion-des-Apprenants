@@ -30,7 +30,7 @@ class UtilisateurRepository {
     }
 
     public function getThisUtilisateurByMail($MAIL): Utilisateur {
-        $sql = "SELECT * FROM employes WHERE MAIL LIKE :MAIL";
+        $sql = "SELECT * FROM utilisateur WHERE MAIL LIKE :MAIL";
 
         $statement = $this->DB->prepare($sql);
 

@@ -73,3 +73,52 @@ function changerPage3() {
   promotions.classList.add("hidden");
 }
 
+function changerPage4() {
+  creationPromo.classList.add("hidden");
+  promotions.classList.remove("hidden");
+}
+
+// Requête AJAX
+const sauvegarderCreationPromo = document.querySelector("#sauvegarderCreationPromo");
+const body = document.getElementById("body");
+
+const inputNomPromo = document.getElementById("nomPromo");
+const inputDateDebut = document.getElementById("dateDebut");
+const inputDateFin = document.getElementById("dateFin");
+const inputPlaces = document.getElementById("places");
+
+if (sauvegarderCreationPromo) {
+  sauvegarderCreationPromo.addEventListener("click", handleFormSubmission);
+}
+
+function handleFormSubmission(event) {
+  event.preventDefault();
+
+  const inputNomPromoValue = inputNomPromo.value;
+  const inputDateDebutValue = inputDateDebut.value;
+  const inputDateFinValue = inputDateFin.value;
+  const inputPlacesValue = inputPlaces.value;
+
+  const url = "/dashboardFormateur";
+
+  const user = {
+    Nom: inputNomPromoValue,
+    Date_debut: inputDateDebutValue,
+    Date_Fin: inputDateFinValue,
+    Places: inputPlacesValue,
+  };
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  }).then((response) => {
+    return response.text();
+  }).then((result) => {
+    body.innerHTML = ''
+    body.innerHTML = result
+  });
+}
+
