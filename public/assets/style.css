@@ -13,7 +13,7 @@ h2 {
     padding: 20px 20px 20px 20px;
 }
 
-.cours {
+.rectangleGris {
     background-color: #f8f9fa;
     padding: 20px;
     margin: 20px;
@@ -29,4 +29,19 @@ h2 {
 
 .visible {
     display: block;
+}
+
+#pomotions {
+    padding: 20px;
+}
+
+.crudTableau {
+    text-align: end;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+a {
+    justify-content: space-between;
 }

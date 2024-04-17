@@ -29,7 +29,7 @@ function getRandomCode() {
   return chiffres[getRandomNumber(chiffres.length)];
 }
 
-// Récupérer le code dans le localStorage
+// Récupérer le code depuis le localStorage au chargement de la page
 window.onload = (event) => {
   let codeExitant = localStorage.getItem("codeExistant");
   code.textContent = codeExitant;
@@ -38,17 +38,25 @@ window.onload = (event) => {
 // Changer de page
 let ongletAccueil = document.querySelector("#ongletAccueil");
 let ongletPromotions = document.querySelector("#ongletPromotions");
+let ajouterPromo = document.querySelector("#ajouterPromo");
+let retourCreationPromo = document.querySelector("#retourCreationPromo");
 
 let accueil = document.querySelector("#accueil");
 let promotions = document.querySelector("#pomotions");
+let creationPromo = document.querySelector("#creationPromo");
 
 ongletPromotions.addEventListener("click", changerPage);
 ongletAccueil.addEventListener("click", changerPage2);
+ajouterPromo.addEventListener("click", changerPage3);
+retourCreationPromo.addEventListener("click", changerPage);
+
+// Page toutes les promotions
 function changerPage() {
   ongletAccueil.classList.remove("active");
   ongletPromotions.classList.add("active");
   accueil.classList.add("hidden");
   promotions.classList.remove("hidden");
+  creationPromo.classList.add("hidden");
 }
 
 function changerPage2() {
@@ -56,4 +64,12 @@ function changerPage2() {
   ongletPromotions.classList.remove("active");
   accueil.classList.remove("hidden");
   promotions.classList.add("hidden");
+  creationPromo.classList.add("hidden");
 }
+
+// Page ajout promotion
+function changerPage3() {
+  creationPromo.classList.remove("hidden");
+  promotions.classList.add("hidden");
+}
+
