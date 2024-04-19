@@ -36,13 +36,6 @@ switch ($uri) {
             header("location: dashboardFormateur");
         }
         break;
-    case HOME_URL . "simplon":
-        if ($methode == 'GET') {
-            $simplonController->homepage();
-        } else if ($methode == 'POST') {
-            $simplonController->create();
-        }
-        break;
     case HOME_URL . 'deconnexion':
         $homeController->quit();
         break;

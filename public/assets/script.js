@@ -1,4 +1,4 @@
-// Générer le code pour valider sa présence
+// Générer le code aléatoire pour valider sa présence
 const chiffres = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const code = document.querySelector("#code");
@@ -50,7 +50,7 @@ ongletAccueil.addEventListener("click", changerPage2);
 ajouterPromo.addEventListener("click", changerPage3);
 retourCreationPromo.addEventListener("click", changerPage);
 
-// Page toutes les promotions
+// Afficher page toutes les promotions
 function changerPage() {
   ongletAccueil.classList.remove("active");
   ongletPromotions.classList.add("active");
@@ -67,7 +67,7 @@ function changerPage2() {
   creationPromo.classList.add("hidden");
 }
 
-// Page ajout promotion
+// Afficher page création promotion
 function changerPage3() {
   creationPromo.classList.remove("hidden");
   promotions.classList.add("hidden");
