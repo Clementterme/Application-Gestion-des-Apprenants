@@ -16,9 +16,9 @@ Si vous souhaitez faire des modifications avant la création de la base de donn�
 
 Créer un site responsive  
 Gérer un backend avec MVC, qui communiquera avec le front sous format d'API, en JSON  
-Permettre au front, construit en SPA, de récupérer et interagir avec le back, en asynchrone.  
+Permettre au front, construit en SPA, de récupérer et interagir avec le back, en asynchrone  
 Gérer une base de données  
-Construire les composants d'accès aux données à la main,  
+Construire les composants d'accès aux données à la main  
 Déployer votre application sur le serveur de Simplon  
 Faire des tests en développement  
 Proposer un gitflow précis et construit  
