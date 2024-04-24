@@ -39,7 +39,7 @@ class UtilisateurRepository {
         return $statement->fetch();
     }
 
-    public function CreateThisEmploye(Utilisateur $utilisateur): bool {
+    public function CreateThisUtilisateur(Utilisateur $utilisateur): bool {
         $sql = "INSERT INTO utilisateur (prenom, nom, mdp, email, compte_active) VALUES (:prenom, :nom, :mdp, :email, :compte_active);";
 
         $statement = $this->DB->prepare($sql);

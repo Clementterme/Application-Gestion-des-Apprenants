@@ -12,8 +12,6 @@
     <div class="container-fluid d-flex">
         <a class="navbar-brand" href="">SIMPLON</a>
     <?php if (isset($_SESSION['connecté'])) { ?>
-        <!-- Affichage du role -->
-        <p><?php echo $_SESSION["role"] ?></p>
         <a href="deconnexion"><button class="btn btn-outline-success" type="submit">Déconnexion</button></a>
     <?php } ?>
     </div>

@@ -1,16 +1,22 @@
 # Application Gestion des Apprenants
 
-Projet Simplon Application de Gestion des Apprenants : l'objectif de ce projet est de créer une application de gestion des élèves, qui permettra de gérer les absences et les retards. 
+L'objectif de ce projet est de créer une application de gestion des élèves, qui permettra de gérer les absences et les retards. 
 
 ## Installation
 
-Lors de l'installation, veuillez renseigner dans le fichier config.php les bonnes informations relatives à la base de données.
+Lors de l'installation, veuillez renseigner dans le fichier config.php situé dans le dossier `src`, les bonnes informations relatives à la base de données.  
+
+`DB_HOST`: Endroit où est stockée la base de données ("localhost" si votre base de données est en local)  
+`DB_NAME`: Nom de la base de données  
+`DB_USER`: Nom d'utilisateur pour se connecter à la base de données  
+`DB_PWD`: Mot de passe de l'utilisateur  
+`HOME_URL`: Url de la page d'accueil  
 
 ## Migration
 
-Lors de l'installation, la base de données va initialiser le code du fichier stocké dans les `Migrations`.
+Pour la migration, importez le fichier `gestionapprenants.sql` situé dans `src/Migrations` dans votre base de données MySQL.  
 
-Si vous souhaitez faire des modifications avant la création de la base de données, c'est donc dans ce fichier que vous devez modifier les choses.
+Si vous souhaitez faire des modifications avant la création de la base de données, c'est dans ce fichier que vous devez modifier les choses.  
 
 ## Objectifs du projet
 
